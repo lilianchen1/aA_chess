@@ -10,7 +10,7 @@ class Game
 
   def initialize
     @game_board = Board.new
-    @current_player = :black
+    @current_player = :white
   end
 
   def play
@@ -83,13 +83,16 @@ class Game
   end
 
   def show_valid_moves(piece_pos)
-    # puts "List of valid moves: "
       @game_board.highlight_moves_render(@game_board.valid_moves(piece_pos, true))
-    # p @game_board.valid_moves(piece_pos, true).map {|move| Board.pos_to_string(move)}
   end
 
   def move_piece(piece, move_to)
     @game_board.move(piece, move_to)
   end
 
+end
+
+if __FILE__ == $PROGRAM_NAME
+  game = Game.new
+  game.play
 end

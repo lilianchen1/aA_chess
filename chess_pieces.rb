@@ -63,7 +63,7 @@ class Bishop < SlidingPiece
 
   def render_piece
     return '♝'.colorize(:color => :black) if @color == :black
-    "♝"
+    "♝".colorize(:color => :white) if @color == :white
   end
 end
 
@@ -74,7 +74,7 @@ class Rook < SlidingPiece
 
   def render_piece
     return '♜'.colorize(:color => :black) if @color == :black
-    "♜"
+    "♜".colorize(:color => :white) if @color == :white
   end
 end
 
@@ -85,7 +85,7 @@ class Queen < SlidingPiece
 
   def render_piece
     return '♛'.colorize(:color => :black) if @color == :black
-    "♛"
+    "♛".colorize(:color => :white) if @color == :white
   end
 end
 
@@ -110,7 +110,7 @@ class King < SteppingPiece
 
   def render_piece
     return '♚'.colorize(:color => :black) if @color == :black
-    "♚"
+    "♚".colorize(:color => :white) if @color == :white
   end
 end
 
@@ -121,7 +121,7 @@ class Knight < SteppingPiece
 
   def render_piece
     return '♞'.colorize(:color => :black) if @color == :black
-    "♞"
+    "♞".colorize(:color => :white) if @color == :white
   end
 end
 
@@ -149,6 +149,6 @@ class Pawn < SteppingPiece
 
   def render_piece
     return '♟'.colorize(:color => :black) if @color == :black
-    "♟"
+    "♟".colorize(:color => :white) if @color == :white
   end
 end
