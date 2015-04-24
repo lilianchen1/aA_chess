@@ -18,7 +18,9 @@ To run the game:
 ![alt text][highlight]
 [highlight]: ./chessgamess/highlightmoves.png
 
-Chess is broken down into a Game class, Board class, and Piece(s) class. Each chess piece (King, Queen, Knight, etc.) is its own class
+#### design logic
+
+Chess is broken down into a Game class, a Board class, and Piece(s) class. Each chess piece (King, Queen, Knight, etc.) is its own class
 and inherit from either Stepping Piece or Sliding Piece. Stepping Piece and Sliding Piece
 inherit are subclasses of the superclass Piece.
 
