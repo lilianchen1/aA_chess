@@ -33,4 +33,8 @@ Piece class has the logic of pieces (move directions, valid moves).
 
 Pieces are created on a board instance in the Board class at appropriate positions and board passes itself to the piece. Game is initialized with a new Board, and a starting player.
 
-A errors are raised and handled by Begin/Rescue block to ensure players enter valid moves (coordinate pairs).
+Errors are raised and handled by Begin/Rescue block to ensure players enter valid moves (coordinate pairs).
+
+#### note on rules
+
+"Fancy rules" are not implemented. These include en passant, pawn promotion, and castling.
