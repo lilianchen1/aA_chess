@@ -10,14 +10,10 @@ class Piece
     @board = board
   end
 
-  protected
-
   def enemy?(pos)
     return false if @board[pos].nil?
     @color != @board[pos].color
   end
-
-  private
 
   def valid?(pos, king_check = true)
     return false if !pos.all? { |x| x.between?(0, @board.length - 1)}
@@ -133,13 +129,46 @@ class Pawn < SteppingPiece
     @first_move = false
   end
 
-  def move_dirs
-    if @first_move == true
-      return [[1, 0]] if @color == :black
-      return [[-1, 0]]
+  def diagonal_dirs
+    if @color == :black
+      return [[1, -1], [1, 1]]
     else
-      return [[1, 0], [2, 0]] if @color == :black
-      return [[-1, 0], [-2, 0]]
+      return [[-1, -1], [-1, 1]]
+    end
+  end
+
+  def enemy_diagonal
+    diagonal_positions = []
+    diagonal_dirs.each do |coord|
+      diagonal_pos = [coord[0] + @pos[0], coord[1] + @pos[1]]
+      if enemy?(diagonal_pos)
+        diagonal_positions << coord
+      end
+    end
+    return diagonal_positions
+  end
+
+  def piece_in_front?
+    if @color == :black
+      front = [@pos[0] + 1, @pos[1]]
+      return false if @board[front].nil?
+      true
+    else
+      front = [@pos[0] - 1, @pos[1]]
+      return false if @board[front].nil?
+      true
+    end
+  end
+
+  def move_dirs
+    if @first_move == false && !piece_in_front?
+      return [[1, 0], [2, 0]].concat(enemy_diagonal) if @color == :black
+      return [[-1, 0], [-2, 0]].concat(enemy_diagonal)
+    elsif @first_move == true && !piece_in_front?
+      return [[1, 0]].concat(enemy_diagonal) if @color == :black
+      return [[-1, 0]].concat(enemy_diagonal)
+    elsif piece_in_front?
+      return enemy_diagonal
     end
   end
 
