@@ -6,8 +6,8 @@ This is a game run in the console.
 
 To run the game:
 
-1. run `gem install colorize`
-2. run `ruby chess_game.rb`
+1. `>> gem install colorize`
+2. `>> ruby chess_game.rb`
 
 ### Starting Board
 ![alt text][start_board]
